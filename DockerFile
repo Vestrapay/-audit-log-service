@@ -1,0 +1,14 @@
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+
+COPY target/TribeAuditLogService-0.0.1-SNAPSHOT.jar app.jar
+ENV DB_HOST=10.25.10.12
+ENV DB_PORT=27017
+ENV DB_USERNAME=admin
+ENV DB_PASSWORD=password
+ENV DB_NAME=admin
+
+EXPOSE 5334
+
+ENTRYPOINT ["java","-jar","app.jar"]
